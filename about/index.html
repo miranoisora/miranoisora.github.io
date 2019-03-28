@@ -1,0 +1,596 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="雨天等放晴">
+    <title>关于我和这个网站 - 雨天等放晴</title>
+    <meta name="author" content="Tang Huan">
+    
+        <meta name="keywords" content="About">
+    
+    
+        <link rel="icon" href="https://tangh.github.io/assets/images/favicon.png">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tang Huan","sameAs":["https://github.com/","https://twitter.com/","https://www.flickr.com/photos/135277712@N07/","https://www.instagram.com/miranoisora/","https://www.youtube.com/","https://space.bilibili.com/634428/"],"image":"icon.jpg"},"articleBody":"\n上次更新：2019-02-28\n\n这个网站是基于 GithubPage 和 Hexo 的，所有的照片视频储存在 AmazonS3，其他图片等储存在 Github。虽然都有 CDN 分发，但是在朝鲜和其他地区仍可能访问缓慢。此外，会有 Youtube、GoogleMaps、Flickr 之类的链接，上述地区需要代理。\n\n\n\n更新说明：\n\n 图片懒加载，以及 image-tag 加上阴影选项\n 去除 Post-Bottom-Bar，将前后导航和目录按钮移到顶部\n\n\n\n2018-10-28\n\n自动缩放 bottom-thumbnailImage 到页面大小 840px 并限定最大高度 320px (postShorten.scss | variables.scss) c0c5fa4\n给 thumbnailImage 加上 border-radius = 5px (postShorten.scss)\n\n\n\n2018-07-29\n\n中文字体换成 sans-serif 类型，加入 PingFangSC、SF UI Display 和 Microsoft YaHei（variables.scss）\n减小标题字号，为 2.8 -&gt; 2.4 -&gt; 2.1 -&gt; 1.9 -&gt; 1.7rem (variables.scss)\n文章区域的最大宽度更改为 840px (variables.scss)\n","dateCreated":"2017-06-23T00:00:00+08:00","dateModified":"2019-03-28T16:49:11+08:00","datePublished":"2017-06-23T00:00:00+08:00","description":"上次更新：2019-02-28","headline":"关于我和这个网站","image":["https://tangh.github.io/assets/images/thumbnails/about.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://tangh.github.io/about/"},"publisher":{"@type":"Organization","name":"Tang Huan","sameAs":["https://github.com/","https://twitter.com/","https://www.flickr.com/photos/135277712@N07/","https://www.instagram.com/miranoisora/","https://www.youtube.com/","https://space.bilibili.com/634428/"],"image":"icon.jpg","logo":{"@type":"ImageObject","url":"icon.jpg"}},"url":"https://tangh.github.io/about/","keywords":"About","thumbnailUrl":"https://tangh.github.io/assets/images/thumbnails/about.png"}</script>
+    <meta name="description" content="上次更新：2019-02-28">
+<meta name="keywords" content="About">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="关于我和这个网站">
+<meta property="og:url" content="https://tangh.github.io/about/index.html">
+<meta property="og:site_name" content="雨天等放晴">
+<meta property="og:description" content="上次更新：2019-02-28">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-03-28T08:49:11.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于我和这个网站">
+<meta name="twitter:description" content="上次更新：2019-02-28">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://tangh.github.io/assets/images/icon.jpg"/>
+    
+    
+        <meta property="og:image" content="https://tangh.github.io/assets/images/thumbnails/about.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://tangh.github.io/assets/images/thumbnails/about.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-czxtcx1ljxzjloqkfwn0u9qjbnk4nhbmeeohd7vrpcmdiblkbdiajalbokbn.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="1">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">雨天等放晴</a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/icon.jpg" alt="Author&#39;s picture">
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="1">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/icon.jpg" alt="Author&#39;s picture">
+                </a>
+                <h4 class="sidebar-profile-name">Tang Huan</h4>
+                
+                    <h5 class="sidebar-profile-bio"></h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="Categories">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="Archives">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.flickr.com/photos/135277712@N07/" target="_blank" rel="noopener" title="Flickr">
+                    
+                        <i class="sidebar-button-icon fab fa-flickr" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Flickr</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.instagram.com/miranoisora/" target="_blank" rel="noopener" title="Instagram">
+                    
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.youtube.com/" target="_blank" rel="noopener" title="Youtube">
+                    
+                        <i class="sidebar-button-icon fab fa-youtube" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Youtube</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://space.bilibili.com/634428/" target="_blank" rel="noopener" title="BiliBili">
+                    
+                        <i class="sidebar-button-icon fab fa-youtube-square" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">BiliBili</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="1"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title">
+            关于我和这个网站
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2017-06-23T00:00:00+08:00">
+	
+		    6月 23, 2017
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/About/">About</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <!-- excerpt --><p></p>
+<div class="alert info"><p>上次更新：2019-02-28</p>
+</div>
+<p>这个网站是基于 GithubPage 和 Hexo 的，所有的照片视频储存在 AmazonS3，其他图片等储存在 Github。虽然都有 CDN 分发，但是在朝鲜和其他地区仍可能访问缓慢。此外，会有 Youtube、GoogleMaps、Flickr 之类的链接，上述地区需要代理。</p>
+<hr>
+<p></p>
+
+<p>更新说明：</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 图片懒加载，以及 image-tag 加上阴影选项</li>
+<li style="list-style: none"><input type="checkbox"> 去除 Post-Bottom-Bar，将前后导航和目录按钮移到顶部<p></p>
+
+</li>
+</ul>
+<p>2018-10-28</p>
+<ul>
+<li>自动缩放 bottom-thumbnailImage 到页面大小 840px 并限定最大高度 320px (postShorten.scss | variables.scss) <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/commit/c0c5fa491bb8e8b7b66a8de8ca54b8d251dc17d4" target="_blank" rel="noopener">c0c5fa4</a></li>
+<li>给 thumbnailImage 加上 border-radius = 5px (postShorten.scss)<p></p>
+
+</li>
+</ul>
+<p>2018-07-29</p>
+<ul>
+<li>中文字体换成 sans-serif 类型，加入 PingFangSC、SF UI Display 和 Microsoft YaHei（variables.scss）</li>
+<li>减小标题字号，为 2.8 -&gt; 2.4 -&gt; 2.1 -&gt; 1.9 -&gt; 1.7rem (variables.scss)</li>
+<li>文章区域的最大宽度更改为 840px (variables.scss)</li>
+</ul>
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/About/">About</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/2017-Western-US/" data-tooltip="在长长的暑假去了美国" aria-label="PREVIOUS: 在长长的暑假去了美国">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tangh.github.io/about/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tangh.github.io/about/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tangh.github.io/about/" title="Share on Google+">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://tangh.github.io/about/" title="Share on Weibo">
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tangh.github.io/about/&amp;title=关于我和这个网站" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 Tang Huan. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/2017-Western-US/" data-tooltip="在长长的暑假去了美国" aria-label="PREVIOUS: 在长长的暑假去了美国">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tangh.github.io/about/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tangh.github.io/about/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tangh.github.io/about/" title="Share on Google+">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://tangh.github.io/about/" title="Share on Weibo">
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tangh.github.io/about/&amp;title=关于我和这个网站" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tangh.github.io/about/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://tangh.github.io/about/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://tangh.github.io/about/">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://tangh.github.io/about/">
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tangh.github.io/about/&amp;title=关于我和这个网站">
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/icon.jpg" alt="Author&#39;s picture">
+        
+            <h4 id="about-card-name">Tang Huan</h4>
+        
+            <div id="about-card-bio"></div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-lwwxnvdlifrocbbegdppyoksbvcbdfv8eqomwquvcepwtfa4lp363co1nvag.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://tangh.github.io/about/';
+                 
+                    this.page.identifier = 'about/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'sorakasugano';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    </body>
+</html>

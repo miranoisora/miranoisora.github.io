@@ -71,7 +71,7 @@ h3,
 h4,
 h5,
 h6 {
-  letter-spacing: -0.04em;
+  letter-spacing: -0.01em;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "PingFang SC", sans-serif;
   font-weight: 700;
   line-height: 1.45em;
@@ -1915,7 +1915,7 @@ a.fancybox {
       color: #9eabb3; }
   .post .post-content {
     text-rendering: optimizelegibility;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.2px;
     font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
     color: #5d686f;
     margin-top: 20px;
@@ -1931,6 +1931,25 @@ a.fancybox {
     .post .post-content :not(blockquote):not(li):not(.alert) > p {
       margin: 1.5em 0 0 0; }
     .post .post-content li p {
+      margin: 0 0 0 0; }
+  .post .post-content-serif {
+    text-rendering: optimizelegibility;
+    letter-spacing: -0.2px;
+    font-family: "Merriweather", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #5d686f;
+    margin-top: 20px;
+    font-weight: 400;
+    overflow: hidden;
+    -webkit-hypens: auto;
+    -moz-hypens: auto;
+    hypens: auto; }
+    .post .post-content-serif img {
+      display: block;
+      width: auto;
+      max-width: 100%; }
+    .post .post-content-serif :not(blockquote):not(li):not(.alert) > p {
+      margin: 1.5em 0 0 0; }
+    .post .post-content-serif li p {
       margin: 0 0 0 0; }
   .post .post-footer {
     margin-top: 20px; }
@@ -1949,6 +1968,8 @@ a.fancybox {
 
 @media only screen and (min-width: 768px) {
   .post-content {
+    font-size: 1.7rem; }
+  .post-content-serif {
     font-size: 1.7rem; } }
 
 .post-actions-wrap {

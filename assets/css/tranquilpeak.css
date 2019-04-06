@@ -1754,17 +1754,25 @@ a.fancybox {
 
 @media only screen and (min-width: 1024px) {
   .markdown h1 {
-    font-size: 2.8rem; }
+    font-size: 2.8rem;
+    text-align: left; }
   .markdown h2 {
-    font-size: 2.4rem; }
+    font-size: 2.4rem;
+    text-align: left; }
   .markdown h3 {
-    font-size: 2.1rem; }
+    font-size: 2.1rem;
+    text-align: left; }
   .markdown h4 {
-    font-size: 1.9rem; }
+    font-size: 1.9rem;
+    text-align: left; }
   .markdown h5 {
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    text-align: left; }
   .markdown h6 {
-    font-size: 1.8rem; } }
+    font-size: 1.8rem;
+    text-align: left; }
+  .markdown h1 {
+    margin-top: 60px; } }
 
 @media only screen and (max-width: 767px) {
   .markdown h1 {
@@ -1792,7 +1800,9 @@ a.fancybox {
   .markdown h5 {
     font-size: 1.6rem; }
   .markdown h6 {
-    font-size: 1.6rem; } }
+    font-size: 1.6rem; }
+  .markdown h1 {
+    margin-top: 60px; } }
 
 .media-body, .media-left {
   display: table-cell;
@@ -1935,6 +1945,7 @@ a.fancybox {
   .post .post-content-serif {
     text-rendering: optimizelegibility;
     letter-spacing: -0.2px;
+    text-align: justify;
     font-family: "Merriweather", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     color: #5d686f;
     margin-top: 20px;
@@ -2020,9 +2031,11 @@ a.fancybox {
       margin-bottom: 15px;
       line-height: 40px; }
       .post-bar-actions-wrap div.post-action-share div.post-action .post-bar-action-btn {
-        padding: 8px 14px;
-        border-radius: 50%;
-        box-shadow: 0.1px 0.1px 1px; }
+        padding: 0;
+        width: 38px;
+        height: 38px;
+        display: block;
+        border-radius: 50%; }
 
 @media only screen and (max-width: 767px) {
   .post-actions-wrap ul.post-action-nav {

@@ -16339,15 +16339,14 @@ return jQuery;
         buttons: [
           'fullScreen',
           'thumbs',
-          'share',
-          'download',
           'zoom',
           'close'
         ],
         thumbs: {
           autoStart: thumbs,
           axis: 'x'
-        }
+        },
+        protect: true
       });
     }
 

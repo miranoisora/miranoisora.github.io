@@ -132,7 +132,7 @@
    */
   var AnimateHashTagLinks = function() {
     // Elements where the user can click to trigger in-page jump
-    this.$hashTags = $('a[href="#"],a[href="#table-of-contents"],a[href="#disqus_thread"],a.toc-link,a.category-anchor,a.tag').filter('[href^="#"]');
+    this.$hashTags = $('a[href="#"],a[href="#table-of-contents"],a[href="#disqus_thread"],a[href="#gitalk"],a.toc-link,a.category-anchor,a.tag').filter('[href^="#"]');
   };
 
   AnimateHashTagLinks.prototype = {
@@ -141,19 +141,20 @@
      * @return {void}
      */
     run: function() {
-      var self = this;
+      // var self = this;    Nerver used in this func
       // Detect the click on the hash tag links
       this.$hashTags.click(function() {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
           if (this.href.slice(-1) === '#' && this.hash === '') {
             var targetOffset = 0;
-          } else {
+          }
+          else {
             var $target = $(this.hash);
             var targetOffset = $target.offset().top;
           }
           $('html,body').animate({
               scrollTop: targetOffset
-          },750);
+          }, 750);
           return false;
           }
         }
@@ -165,7 +166,8 @@
     var animateHashTagLinks = new AnimateHashTagLinks();
     animateHashTagLinks.run();
   });
-})(jQuery);;(function($) {
+})(jQuery);
+;(function($) {
   'use strict';
 
   // Filter posts by using their date on archives page : `/archives`
@@ -560,14 +562,15 @@
      * @returns {void}
      */
     function fancyFox() {
-      var thumbs = false;
+      // var thumbs = false;
 
       // disable navigation arrows and display thumbs on medium and large screens
-      if ($(window).height() > 480) {
-        thumbs = true;
-      }
+      // if ($(window).height() > 480) {
+      //   thumbs = true;
+      // }
 
       $('.fancybox').fancybox({
+        // options docs: https://fancyapps.com/fancybox/3/docs/#options
         buttons: [
           'fullScreen',
           'thumbs',
@@ -575,10 +578,16 @@
           'close'
         ],
         thumbs: {
-          autoStart: thumbs,
+          autoStart: false, // disable display thumbnails on opening
           axis: 'x'
         },
-        protect: true
+        protect: true,
+        idleTime: 5,
+        animationEffect: 'zoom',
+        preventCaptionOverlap: true,
+        mobile: {
+          preventCaptionOverlap: true
+        }
       });
     }
 

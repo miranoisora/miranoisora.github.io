@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tangh.github.io/post/hexo-with-github-pages-static-site/</loc>
+    
+    <lastmod>2019-05-26T10:26:12.365Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tangh.github.io/post/western-united-states/</loc>
     
-    <lastmod>2019-05-18T13:29:03.033Z</lastmod>
+    <lastmod>2019-05-26T05:25:01.370Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/post/hajimemashite-fujisan/</loc>
     
-    <lastmod>2019-05-18T12:08:13.128Z</lastmod>
+    <lastmod>2019-05-26T05:24:26.140Z</lastmod>
     
   </url>
   

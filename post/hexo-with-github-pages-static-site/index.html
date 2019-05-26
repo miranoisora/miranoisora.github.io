@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="雨天等放晴">
+    <title>Hexo + GitHub Pages 静态网站 - 雨天等放晴</title>
+    <meta name="author" content="Tang Huan">
+    
+        <meta name="keywords" content="Hexo,GitHub Pages,Amazon S3,OneDrive">
+    
+    
+        <link rel="icon" href="https://tangh.github.io/assets/images/favicon.png">
+    
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="https://tangh.github.io/assets/images/apple-touch-icon.png">
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tang Huan","sameAs":["https://github.com/tangh/","https://twitter.com/miranoisora/","https://www.flickr.com/photos/135277712@N07/","https://www.instagram.com/miranoisora/","https://www.youtube.com/channel/UCO-I0MZR6-HYmI_tgbBc0yw/","https://space.bilibili.com/634428/"],"image":"icon.jpg"},"articleBody":"\n在 2017 年，我刚开始在上海的新生活的时候，虽然早几年就听说过 Node.js 和 GitHub 这些，但实际上也没接触过，毕竟不是程序🦍。倒是机缘巧合在去年一系列的事情导致我学到不少。最近我偶然得知 GitHub 的用户名是不能占着茅坑不拉屎的，详见 Name Squatting Policy（Squatting 也很精髓了），所以我就发邮件拿到了这个 2011 年就曾经注册了的用户名。再加上我准备慢慢改一下这个主题，所以就干脆整理下当时怎么折腾 Github Pages 的。\n简单介绍：Github Pages 是一个托管静态网页的平台，静态网页就是没有后台数据库，仅加载一些 Html、CSS、JS 文件，很多对象存储服务和代码托管平台都自带这一功能，比如阿里云 OSS、腾讯云 COS、Amazon S3、Coding 等，还有一些专门提供这种服务的网站如 netlify 等。Hexo 就是用 markdown 文件生成这些静态网页的工具，除此之外还有 jekyll 等。\n写作需要学习一个 markdown 语法，再学一个 Git 就更好不过，花不了多少时间。\n以 Windows10 (1809) 为例，在多台电脑之间同步的部分，另一台电脑同样为 Windows10。在 macOS Mojave (10.14.3) 也这样用过，没什么问题。\n安装 Hexo\n下载安装 Node.js: nodejs.org，目前 10.15.3 LTS 一路 Next 即可。成功的话 cmd 输入 node -v 或 npm -v 应返回版本号。mac 用 homebrew 安装也可以。\n\n下载安装 Git: git-scm.com，目前 2.21.0 也可以一路 Next。default editor 可以换一个，PATH environment 可以改成 Git Bash Only。成功的话任意位置右键菜单应该出现 Git Bash Here。\n\n创建一个文件夹，在 cmd 中 cd 进入，然后 npm install hexo -g，完成后 hexo init 初始化这个文件夹，完成后会显示 INFO  Start blogging with Hexo!。\n\n-g 是全局安装参数，不会安装到当前文件夹中，init 会初始化这个文件夹，初始化后在当前目录可以使用 hexo -v 看到版本号，否则只有 hexo-cli\nhexo-cli (command-line interface) 集成了 hexo 的一些命令用来生成和部署等，会自动附带装上\n\n\n\nInstall Hexo\n\n输入 hexo g 完成后 hexo s（提示端口占用加上参数 -p &lt;port&gt;），浏览器访问 http://localhost:4000 可以看到 Hexo 生成的 Hello World 页面。会多出一个 public 文件夹，里面就是生成的网页。之后就用不到 cmd 了，所有命令都在 Git Bash 中进行即可。\n\n配置 Github\n注册一个 Github 账号。\n\n在 Github 中建立一个 repository，输入 Repository name，必须为 &lt;username&gt;.github.io。\n\n在刚才的文件夹上右键 Git Bash Here，然后输入 git config --global user.email &quot;&lt;github-email&gt;&quot; 以及 git config --global user.name &quot;&lt;your-name&gt;&quot;，邮箱必须是 Github 账户里的邮箱之一或者 Github 提供的 no-reply 邮箱，不然，倒也没啥问题，只是 commit 不会关联到自己的账户了。名字随意， Github 只靠邮箱关联用户名和用户 About commit email addresses, Setting your commit email address in Git。\n\n输入 ssh-keygen -t rsa -C &quot;&lt;github-email&gt;&quot;，出现的几个提示都直接按回车，生成 SSH 连接的密钥。然后输入 eval &quot;$(ssh-agent -s)&quot;，添加密钥到 ssh-agent，成功后显示 Agent pid。最后再输入 ssh-add ~/.ssh/id_rsa，添加生成的 SSH key 到 ssh-agent，成功后显示 Identity added。\n\n在 GitHub 的 Settings -&gt; SSH and GPG keys 界面，点击 New SSH key，把 id_rsa.pub 文件里（一般在 C:\\Users\\&lt;User Name&gt;\\.ssh）内容复制进去。\n\n输入 ssh -T git@github.com 测试添加是否成功，成功会显示你的 Github Username。\n\n第一次使用 SSH 时会显示 The authenticity of host &#39;github.com (13.229.188.59)&#39; can&#39;t be established. RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8. Are you sure you want to continue connecting (yes/no)? 输入 yes 后会加入到 known host 中。\n\n\n\nverify SSH key & install Hexo plug-in\n配置 Hexo 以及部分命令\nnpm install hexo-deployer-git --save；npm install hexo-filter-auto-spacing --save；npm install hexo-image-lazyload --save。第一个是部署到 GitHub 的插件，必须要装；第二个是自动在中英文间加上空格的插件（可选，我喜欢手动）；第三个是图片懒加载的插件（可选）。\n\n--save 会把包安装到当前文件夹的 node_modules 中，并在 package.json 里添加相关 dependencies 内容：&quot;hexo-deployer-git&quot;: &quot;^1.0.0&quot;\n\n\n在 _config.yml 里填写\n\nSite 部分看着填，里面的 language 会影响多语言的主题，我习惯用 en，这样页面的导航内容就是英文。\nurl 一定要填，否则一些链接会出错；permalink 我改成了 :title/，这样链接会比较短，而且没有数字看上去和谐点。这个属性可以在 markdown post 的 front-matter 部分写上新的覆盖掉这个设置\npost_asset_folder 有人可能需要这个功能，详见 Hexo Docs - asset-folders，我不需要在首页显示完整全文就没开启\ntheme 填主题的文件夹的名称\ndeploy 部分，type: git；repository 为 GitHub 的 SSH；branch: master；message 可选，如果没有这一项的话，每次 git commit 的信息为 Site updated: YYYY-MM-DD HH:mm:ss\n\n\n修改 theme 的 _config.yml，以及 /language/zh-cn.yml 底部的内容。\n\n如果是源码，在 theme 文件夹上 Git Bash Here 运行 npm install ，会新建 theme/node_modules 并将相关依赖安装在内。然后 npm install -g grunt-cli 全局安装 grunt，最后 grunt buildProd（这会构建 theme，比如把 sass 编译成 css 等等，在 theme/source/assets 下）。\n在大局域网内，npm install 经常有问题，如果看见一堆 ERR! 多半是需要梯子。一般问题出在 sass-node，它通过 github release 下载，可以在 theme 下放一个 .npmrc 文件给它指定成淘宝源，内容如下1234sass_binary_site=https://npm.taobao.org/mirrors/node-sass/phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs/electron_mirror=https://npm.taobao.org/mirrors/electron/registry=https://registry.npm.taobao.org\n\n\n\n\ninstall grunt and build theme\n\n启用分类/归档/标签功能，其实就是生成三个文件夹在 hexo/public 下，回到 Hexo 的 Git Bash 中输入 hexo new page &quot;all-categories&quot;、hexo new page &quot;all-archives&quot;、hexo new page &quot;all-tags&quot;，然后修改三个 markdown 文件的内容为如下形式\n 12345---title: all-archiveslayout: all-archivescomments: false---\n\nGit bash 中的一些 hexo 命令\n\nhexo g 为在本地新生成页面，生成完之后可以 hexo s 在本地看看效果\nhexo d 为把 public 文件夹中的内容推送到 github，可以加上参数 -- message &quot;&lt;&gt;&quot; 指定 git commit 的信息。执行第一次之后会多出 .deploy_git 文件夹，里面就是带版本控制的 public 文件夹（真正推送到 github）\nhexo clean 清除 public 文件夹中历史生成的文件，不常用\n\n\n至此，只需要把新的 markdown 文件放入 hexo/source/_posts ，图片可以放入 hexo/source/images/ 或 theme/source/assets/images/ 中以相对方式引用。然后运行上述命令生成推送。\n\n\nAmazon S3 + CloudFront 图床总得需要一个放图片和视频等东西的地方，比较小的可以直接放到 GitHub 上，但是 repository 目前有 1GB 的限制，所以比较大的照片和视频和其它文件就放到了 Amazon S3，费用基本是看流量，目前大概 1GB = ￥1。\n\n注册一个账号，国际的\n\n创建一个 S3 储存桶，名称随意，填域名就好，&lt;username&gt;.github.io 或者 image.&lt;custom-domain&gt; 这样。\n\n在 设置 -&gt; 权限 -&gt; 存储桶策略 里面复制粘贴下面的内容，把 &lt;bucket-name&gt; 替换成刚才的，&lt;username&gt; 也要替换。\n\n\n1234567891011121314151617181920&#123;\t\t\"Version\": \"2012-10-17\",\t\t\"Statement\": [\t\t\t\t&#123;\t\t\t\t\t\t\"Sid\": \"PublicReadForGetBucketObjects\",\t\t\t\t\t\t\"Effect\": \"Allow\",\t\t\t\t\t\t\"Principal\": \"*\",\t\t\t\t\t\t\"Action\": \"s3:GetObject\",\t\t\t\t\t\t\"Resource\": \"arn:aws:s3:::&lt;bucket-name&gt;/*\",\t\t\t\t\t\t\"Condition\": &#123;                \"StringLike\": &#123;                    \"aws:Referer\": [                        \"https://&lt;username&gt;.github.io/*\",                        \"http://localhost:4000/*\"                    ]                &#125;            &#125;\t\t\t\t&#125;\t\t]&#125;\n&quot;Condition&quot; 用来防盗链，这样只有通过之内的域名（HTTP Head）才能访问这个储存桶的文件。只适用于以 https://s3-ap-northeast-1.amazonaws.com/&lt;bucket-name&gt;/&lt;filename&gt; 访问的情况。\n\n在 属性 页面，选择静态网站托管，索引文件填 index.html，错误文档填 error.html，不必真的有这两个页面。这一步也可以不需要。\n\n这时候往这个存储桶里上传文件，就可以有一个链接了。当然，这个链接在大型局域网下访问会很缓慢，有的还打不开。下面加上一个 CDN 就会好不少，而且在大型局域网外也会改善。\n\n打开 CloudFront Distribution 选择 Create（创建分配）：\n\nOrigin Domain Name 选择刚才 S3 Bucket 的名称\nAlternate Domain Names (CNAMEs) 有自定义域名就填，没有就空着\nPrice Class 选择 Use Only US, Canada, Europe and Asia\n限制存储桶访问，创建新身份，并更新存储桶策略（授予读取权限），这样会自动在存储桶策略中的 &quot;Statement&quot; 中加入允许 CloudFront 访问的以下内容123456789&#123;\t\t\"Sid\": \"2\",\t\t\"Effect\": \"Allow\",\t\t\"Principal\": &#123;\t\t\t\t\"AWS\": \"arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity XXX\"\t\t&#125;,\t\t\"Action\": \"s3:GetObject\",\t\t\"Resource\": \"arn:aws:s3:::&lt;bucket-name&gt;/*\"&#125;\n\n\n\n过一会 就会部署好，使用 cloudfront.net 的域名（或自定义的）访问即可。这样有个问题是使用这个域名速度非常快但是是没有防盗链的，需要配合 AWS WAF 解决。\n\n\nOneDrive 图床不得不说 CloudFront 的速度还是相当之快，即使是 HK 上线之前局域网内也是秒开。唯一的缺点就是费用还是需要一点的，尤其是图片很多的话。目前 AWS 还没有免费额度（一年试用之后）。\n后来还是希望使用完全免费的平台，也不上域名之类的。所以我现在使用的是 OneDrive，被墙了，但是同 Flickr 一样，嵌入的图片是可以打开的。使用方法很简单，想办法上传之后，然后点击嵌入，复制链接即可使用（最好删掉链接 ? 及之后的内容，否则比如 GIF 会不动）。\n如果说缺点，大概就是：\n\n大局域网内不如 AWS 快\n每张图片都需要手动点击嵌入，复制链接（AWS 的链接前面都是相同的，链接中只需改文件名，而 OneDrive 的链接都是乱的）\n\n多台电脑之间同步我大多数时间使用一台 Windows 的台式机，出门旅游过年回家等用 Mac。这部分得学习 Git，感觉这也是用 Github Pages 的好处，廖雪峰的 Git 教程我看就很不错且够用。\n\n前提知识：./.deploy_git/ 如前所述，这个是真正推送到 &lt;username.github.io&gt; 这个 repository 的文件夹，而且，每次 hexo deploy 执行的都是 force push，意味着如果这个文件夹丢失，那么之前的 commit 也都会消失。\n\n把 theme 文件夹里可能有的 .git 文件夹删了，目录里不能同时有两个（.deploy_git 下也有一个但是这个在 .gitignore 中被忽略了）。\n\n新建一个 repository，称它为 backup repo（有人说用分支，但是现在 private repo 也免费了，而且还不会占一个 repo 1GB 的空间限制）。\n\n针对 tranquilpeak 这个 theme：删掉 theme/.gitignore 里面的 assets。\n\n在 Hexo 文件夹的 Git Bash 中 git init -&gt; git add . -&gt; git commit -m &quot;&lt;info&gt;&quot; -&gt; git remote add origin git@github.com:&lt;username&gt;/&lt;reponame&gt;.git -&gt; git push -u origin master\n\n现在，除了 public 和 node_modules 之外的所有文件都备份到了 GitHub。前者通过 Hexo g 生成，后者 npm install 安装，都是无需备份的。\n\n在新的电脑上，首先安装 Git、Node.js、Hexo，然后配置好 SSH Key，然后把刚才的 backup repo clone 下来，再把 &lt;username.github.io&gt; 这个 repo clone 到 hexo 文件夹内，文件夹名称改为 .deploy_git。最后在 hexo 和 theme 上分别 npm install。\n在 Windows 上有个很蠢的问题就是它可能不让用 . 开头作为文件（夹）名，需要 cmd 命令 ren &lt;dir_path&gt; .deploy_git 【更新：Windows10 1903 已经解决了这个问题】\n\n\n之后需要在两台电脑切换时，只需在做了最新修改的一台电脑 push backup repo；然后在另一台 pull backup repo，如果执行过 hexo d 的话还要在 .deploy_git 上也 pull。就完成了多台电脑的同步，且这样不会丢失 commit history。\n\n\n更新 Hexo 的版本更新升级意义不大，大版本再折腾吧。theme 直接下载新的 release，把 _config-theme.yml 和 assets 文件夹复制过去覆盖就好，当然前提是看下 _config-theme.yml 有没有大变化。\nHexo 可以修改 package.json 里面的版本，最新版本号可以 npm outdated 查看，然后 npm install。","dateCreated":"2019-03-16T00:00:00+08:00","dateModified":"2019-05-26T18:26:12+08:00","datePublished":"2019-03-16T00:00:00+08:00","description":"使用 Hexo 生成静态网页并在 GitHub Pages 部署的方法，包含安装、设置、主题、多设备之间的同步，以及基于 Amazon S3 + CloudFront 的图床方案。","headline":"Hexo + GitHub Pages 静态网站","image":["https://tangh.github.io/images/thumbnails/hexo-github.png"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://tangh.github.io/post/hexo-with-github-pages-static-site/"},"publisher":{"@type":"Organization","name":"Tang Huan","sameAs":["https://github.com/tangh/","https://twitter.com/miranoisora/","https://www.flickr.com/photos/135277712@N07/","https://www.instagram.com/miranoisora/","https://www.youtube.com/channel/UCO-I0MZR6-HYmI_tgbBc0yw/","https://space.bilibili.com/634428/"],"image":"icon.jpg","logo":{"@type":"ImageObject","url":"icon.jpg"}},"url":"https://tangh.github.io/post/hexo-with-github-pages-static-site/","keywords":"Hexo, GitHub Pages, Amazon S3","thumbnailUrl":"https://tangh.github.io/images/thumbnails/hexo-github.png"}</script>
+    <meta name="description" content="使用 Hexo 生成静态网页并在 GitHub Pages 部署的方法，包含安装、设置、主题、多设备之间的同步，以及基于 Amazon S3 + CloudFront 的图床方案。">
+<meta name="keywords" content="Hexo,GitHub Pages,Amazon S3,OneDrive">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Hexo + GitHub Pages 静态网站">
+<meta property="og:url" content="https://tangh.github.io/post/hexo-with-github-pages-static-site/index.html">
+<meta property="og:site_name" content="雨天等放晴">
+<meta property="og:description" content="使用 Hexo 生成静态网页并在 GitHub Pages 部署的方法，包含安装、设置、主题、多设备之间的同步，以及基于 Amazon S3 + CloudFront 的图床方案。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://tangh.github.io/images/hexo/install-hexo.png">
+<meta property="og:image" content="https://tangh.github.io/images/hexo/ssh-key.png">
+<meta property="og:image" content="https://tangh.github.io/images/hexo/grunt-build.png">
+<meta property="og:updated_time" content="2019-05-26T10:26:12.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo + GitHub Pages 静态网站">
+<meta name="twitter:description" content="使用 Hexo 生成静态网页并在 GitHub Pages 部署的方法，包含安装、设置、主题、多设备之间的同步，以及基于 Amazon S3 + CloudFront 的图床方案。">
+<meta name="twitter:image" content="https://tangh.github.io/images/hexo/install-hexo.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://tangh.github.io/assets/images/icon.jpg"/>
+    
+    
+        <meta property="og:image" content="https://tangh.github.io/images/thumbnails/hexo-github.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="https://tangh.github.io/images/thumbnails/hexo-github.png" />
+    
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:400,700&amp;subset=chinese-simplified,cyrillic,japanese" rel="stylesheet">
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-vvqekoi3akdyjksvqmf5p2jnj58gaciq9nhlz1q1wpfyffzpcvwonh2v9d4q.min.css">
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137837052-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-137837052-1');
+    </script>
+
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">雨天等放晴</a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about">
+        
+        
+            <img class="header-picture" src="/assets/images/icon.jpg" alt="Author&#39;s picture">
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/icon.jpg" alt="Author&#39;s picture">
+                </a>
+                <h4 class="sidebar-profile-name">Tang Huan</h4>
+                
+                    <h5 class="sidebar-profile-bio"></h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="Categories">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="Archives">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/about" title="About">
+                    
+                        <i class="sidebar-button-icon fas fa-cube" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/tangh/" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/miranoisora/" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.flickr.com/photos/135277712@N07/" target="_blank" rel="noopener" title="Flickr">
+                    
+                        <i class="sidebar-button-icon fab fa-flickr" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Flickr</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.instagram.com/miranoisora/" target="_blank" rel="noopener" title="Instagram">
+                    
+                        <i class="sidebar-button-icon fab fa-instagram" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.youtube.com/channel/UCO-I0MZR6-HYmI_tgbBc0yw/" target="_blank" rel="noopener" title="Youtube">
+                    
+                        <i class="sidebar-button-icon fab fa-youtube" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Youtube</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://space.bilibili.com/634428/" target="_blank" rel="noopener" title="BiliBili">
+                    
+                        <i class="sidebar-button-icon fab fa-youtube-square" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">BiliBili</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-center">
+    
+        <h1 class="post-title">
+            Hexo + GitHub Pages 静态网站
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-03-16T00:00:00+08:00">
+	
+		    Mar 16, 2019
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Computer/">Computer</a>, <a class="category-link" href="/categories/Computer/Web/">Web</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    
+        <div class="post-content markdown">
+    
+        <div class="main-content-wrap">
+            <!-- excerpt --><p></p>
+<p>在 2017 年，我刚开始在上海的新生活的时候，虽然早几年就听说过 Node.js 和 GitHub 这些，但实际上也没接触过，毕竟不是程序🦍。倒是机缘巧合在去年一系列的事情导致我学到不少。最近我偶然得知 GitHub 的用户名是不能占着茅坑不拉屎的，详见 <a href="https://help.github.com/en/articles/name-squatting-policy" target="_blank" rel="noopener">Name Squatting Policy</a>（Squatting 也很精髓了），所以我就发邮件拿到了这个 2011 年就曾经注册了的用户名。再加上我准备慢慢改一下这个主题，所以就干脆整理下当时怎么折腾 Github Pages 的。</p>
+<p>简单介绍：Github Pages 是一个托管静态网页的平台，静态网页就是没有后台数据库，仅加载一些 Html、CSS、JS 文件，很多对象存储服务和代码托管平台都自带这一功能，比如阿里云 OSS、腾讯云 COS、Amazon S3、Coding 等，还有一些专门提供这种服务的网站如 netlify 等。Hexo 就是用 markdown 文件生成这些静态网页的工具，除此之外还有 jekyll 等。</p>
+<p>写作需要学习一个 markdown 语法，再学一个 Git 就更好不过，花不了多少时间。</p>
+<p>以 Windows10 (1809) 为例，在多台电脑之间同步的部分，另一台电脑同样为 Windows10。在 macOS Mojave (10.14.3) 也这样用过，没什么问题。</p>
+<h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><ol>
+<li><p>下载安装 Node.js: <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a>，目前 10.15.3 LTS 一路 Next 即可。成功的话 cmd 输入 <code>node -v</code> 或 <code>npm -v</code> 应返回版本号。mac 用 homebrew 安装也可以。</p>
+</li>
+<li><p>下载安装 Git: <a href="https://git-scm.com/" target="_blank" rel="noopener">git-scm.com</a>，目前 2.21.0 也可以一路 Next。default editor 可以换一个，PATH environment 可以改成 <code>Git Bash Only</code>。成功的话任意位置右键菜单应该出现 <code>Git Bash Here</code>。</p>
+</li>
+<li><p>创建一个文件夹，在 cmd 中 cd 进入，然后 <code>npm install hexo -g</code>，完成后 <code>hexo init</code> 初始化这个文件夹，完成后会显示 <code>INFO  Start blogging with Hexo!</code>。</p>
+<ul>
+<li><code>-g</code> 是全局安装参数，不会安装到当前文件夹中，<code>init</code> 会初始化这个文件夹，初始化后在当前目录可以使用 <code>hexo -v</code> 看到版本号，否则只有 hexo-cli</li>
+<li>hexo-cli (command-line interface) 集成了 hexo 的一些命令用来生成和部署等，会自动附带装上</li>
+</ul>
+</li>
+</ol>
+<div class="figure center" style="width:;"><a class="fancybox" href="/images/hexo/install-hexo.png" title="Install Hexo" data-caption="Install Hexo" data-fancybox="default"><img class="fig-img" src="/images/hexo/install-hexo.png" alt="Install Hexo"></a><span class="caption">Install Hexo</span></div><div style="clear:both;"></div>
+<ol start="4">
+<li>输入 <code>hexo g</code> 完成后 <code>hexo s</code>（提示端口占用加上参数 <code>-p &lt;port&gt;</code>），浏览器访问 <code>http://localhost:4000</code> 可以看到 Hexo 生成的 Hello World 页面。会多出一个 public 文件夹，里面就是生成的网页。之后就用不到 cmd 了，所有命令都在 Git Bash 中进行即可。</li>
+</ol>
+<h1 id="配置-Github"><a href="#配置-Github" class="headerlink" title="配置 Github"></a>配置 Github</h1><ol start="0">
+<li><p>注册一个 Github 账号。</p>
+</li>
+<li><p>在 Github 中建立一个 repository，输入 Repository name，必须为 <code>&lt;username&gt;.github.io</code>。</p>
+</li>
+<li><p>在刚才的文件夹上右键 <code>Git Bash Here</code>，然后输入 <code>git config --global user.email &quot;&lt;github-email&gt;&quot;</code> 以及 <code>git config --global user.name &quot;&lt;your-name&gt;&quot;</code>，邮箱必须是 Github 账户里的邮箱之一或者 Github 提供的 no-reply 邮箱，不然，倒也没啥问题，只是 commit 不会关联到自己的账户了。名字随意， Github 只靠邮箱关联用户名和用户 <a href="https://help.github.com/en/articles/about-commit-email-addresses" target="_blank" rel="noopener">About commit email addresses</a>, <a href="https://help.github.com/en/articles/setting-your-commit-email-address-in-git" target="_blank" rel="noopener">Setting your commit email address in Git</a>。</p>
+</li>
+<li><p>输入 <code>ssh-keygen -t rsa -C &quot;&lt;github-email&gt;&quot;</code>，出现的几个提示都直接按回车，生成 SSH 连接的密钥。然后输入 <code>eval &quot;$(ssh-agent -s)&quot;</code>，添加密钥到 ssh-agent，成功后显示 Agent pid。最后再输入 <code>ssh-add ~/.ssh/id_rsa</code>，添加生成的 SSH key 到 ssh-agent，成功后显示 Identity added。</p>
+</li>
+<li><p>在 GitHub 的 <code>Settings -&gt; SSH and GPG keys</code> 界面，点击 <code>New SSH key</code>，把 <code>id_rsa.pub</code> 文件里（一般在 <code>C:\Users\&lt;User Name&gt;\.ssh</code>）内容复制进去。</p>
+</li>
+<li><p>输入 <code>ssh -T git@github.com</code> 测试添加是否成功，成功会显示你的 Github Username。</p>
+<ul>
+<li>第一次使用 SSH 时会显示 <code>The authenticity of host &#39;github.com (13.229.188.59)&#39; can&#39;t be established. RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8. Are you sure you want to continue connecting (yes/no)?</code> 输入 yes 后会加入到 known host 中。</li>
+</ul>
+</li>
+</ol>
+<div class="figure center" style="width:;"><a class="fancybox" href="/images/hexo/ssh-key.png" title="verify SSH key & install Hexo plug-in" data-caption="verify SSH key & install Hexo plug-in" data-fancybox="default"><img class="fig-img" src="/images/hexo/ssh-key.png" alt="verify SSH key & install Hexo plug-in"></a><span class="caption">verify SSH key & install Hexo plug-in</span></div><div style="clear:both;"></div>
+<h1 id="配置-Hexo-以及部分命令"><a href="#配置-Hexo-以及部分命令" class="headerlink" title="配置 Hexo 以及部分命令"></a>配置 Hexo 以及部分命令</h1><ol>
+<li><p><code>npm install hexo-deployer-git --save</code>；<code>npm install hexo-filter-auto-spacing --save</code>；<code>npm install hexo-image-lazyload --save</code>。第一个是部署到 GitHub 的插件，必须要装；第二个是自动在中英文间加上空格的插件（可选，我喜欢手动）；第三个是图片懒加载的插件（可选）。</p>
+<ul>
+<li><code>--save</code> 会把包安装到当前文件夹的 node_modules 中，并在 package.json 里添加相关 dependencies 内容：<code>&quot;hexo-deployer-git&quot;: &quot;^1.0.0&quot;</code></li>
+</ul>
+</li>
+<li><p>在 <code>_config.yml</code> 里填写</p>
+<ul>
+<li><code>Site</code> 部分看着填，里面的 <code>language</code> 会影响多语言的主题，我习惯用 <code>en</code>，这样页面的导航内容就是英文。</li>
+<li><code>url</code> 一定要填，否则一些链接会出错；<code>permalink</code> 我改成了 <code>:title/</code>，这样链接会比较短，而且没有数字看上去和谐点。这个属性可以在 markdown post 的 front-matter 部分写上新的覆盖掉这个设置</li>
+<li><code>post_asset_folder</code> 有人可能需要这个功能，详见 <a href="https://hexo.io/zh-cn/docs/asset-folders" target="_blank" rel="noopener">Hexo Docs - asset-folders</a>，我不需要在首页显示完整全文就没开启</li>
+<li><code>theme</code> 填主题的文件夹的名称</li>
+<li><code>deploy</code> 部分，<code>type: git</code>；repository 为 GitHub 的 SSH；<code>branch: master</code>；<code>message</code> 可选，如果没有这一项的话，每次 git commit 的信息为 <code>Site updated: YYYY-MM-DD HH:mm:ss</code></li>
+</ul>
+</li>
+<li><p>修改 theme 的 <code>_config.yml</code>，以及 <code>/language/zh-cn.yml</code> 底部的内容。</p>
+<ul>
+<li>如果是源码，在 theme 文件夹上 Git Bash Here 运行 <code>npm install</code> ，会新建 theme/node_modules 并将相关依赖安装在内。然后 <code>npm install -g grunt-cli</code> 全局安装 grunt，最后 <code>grunt buildProd</code>（这会构建 theme，比如把 sass 编译成 css 等等，在 <code>theme/source/assets</code> 下）。</li>
+<li>在大局域网内，<code>npm install</code> 经常有问题，如果看见一堆 <code>ERR!</code> 多半是需要梯子。一般问题出在 sass-node，它通过 github release 下载，可以在 theme 下放一个 <code>.npmrc</code> 文件给它指定成淘宝源，内容如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line">phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs/</span><br><span class="line">electron_mirror=https://npm.taobao.org/mirrors/electron/</span><br><span class="line">registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<div class="figure center" style="width:;"><a class="fancybox" href="/images/hexo/grunt-build.png" title="install grunt and build theme" data-caption="install grunt and build theme" data-fancybox="default"><img class="fig-img" src="/images/hexo/grunt-build.png" alt="install grunt and build theme"></a><span class="caption">install grunt and build theme</span></div><div style="clear:both;"></div>
+<ol start="4">
+<li><p>启用分类/归档/标签功能，其实就是生成三个文件夹在 <code>hexo/public</code> 下，回到 Hexo 的 Git Bash 中输入 <code>hexo new page &quot;all-categories&quot;</code>、<code>hexo new page &quot;all-archives&quot;</code>、<code>hexo new page &quot;all-tags&quot;</code>，然后修改三个 markdown 文件的内容为如下形式</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: all-archives</span><br><span class="line">layout: all-archives</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Git bash 中的一些 hexo 命令</p>
+<ul>
+<li><code>hexo g</code> 为在本地新生成页面，生成完之后可以 <code>hexo s</code> 在本地看看效果</li>
+<li><code>hexo d</code> 为把 public 文件夹中的内容推送到 github，可以加上参数 <code>-- message &quot;&lt;&gt;&quot;</code> 指定 git commit 的信息。执行第一次之后会多出 <code>.deploy_git</code> 文件夹，里面就是带版本控制的 public 文件夹（真正推送到 github）</li>
+<li><code>hexo clean</code> 清除 public 文件夹中历史生成的文件，不常用</li>
+</ul>
+</li>
+<li><p>至此，只需要把新的 markdown 文件放入 <code>hexo/source/_posts</code> ，图片可以放入 <code>hexo/source/images/</code> 或 <code>theme/source/assets/images/</code> 中以相对方式引用。然后运行上述命令生成推送。</p>
+</li>
+</ol>
+<h1 id="Amazon-S3-CloudFront-图床"><a href="#Amazon-S3-CloudFront-图床" class="headerlink" title="Amazon S3 + CloudFront 图床"></a>Amazon S3 + CloudFront 图床</h1><p>总得需要一个放图片和视频等东西的地方，比较小的可以直接放到 GitHub 上，但是 repository 目前有 1GB 的限制，所以比较大的照片和视频和其它文件就放到了 Amazon S3，费用基本是看流量，目前大概 1GB = ￥1。</p>
+<ol start="0">
+<li><p>注册一个账号，国际的</p>
+</li>
+<li><p>创建一个 S3 储存桶，名称随意，填域名就好，<code>&lt;username&gt;.github.io</code> 或者 <code>image.&lt;custom-domain&gt;</code> 这样。</p>
+</li>
+<li><p>在 <code>设置 -&gt; 权限 -&gt; 存储桶策略</code> 里面复制粘贴下面的内容，把 <code>&lt;bucket-name&gt;</code> 替换成刚才的，<code>&lt;username&gt;</code> 也要替换。</p>
+</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">		<span class="attr">"Version"</span>: <span class="string">"2012-10-17"</span>,</span><br><span class="line">		<span class="attr">"Statement"</span>: [</span><br><span class="line">				&#123;</span><br><span class="line">						<span class="attr">"Sid"</span>: <span class="string">"PublicReadForGetBucketObjects"</span>,</span><br><span class="line">						<span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">						<span class="attr">"Principal"</span>: <span class="string">"*"</span>,</span><br><span class="line">						<span class="attr">"Action"</span>: <span class="string">"s3:GetObject"</span>,</span><br><span class="line">						<span class="attr">"Resource"</span>: <span class="string">"arn:aws:s3:::&lt;bucket-name&gt;/*"</span>,</span><br><span class="line">						<span class="attr">"Condition"</span>: &#123;</span><br><span class="line">                <span class="attr">"StringLike"</span>: &#123;</span><br><span class="line">                    <span class="attr">"aws:Referer"</span>: [</span><br><span class="line">                        <span class="string">"https://&lt;username&gt;.github.io/*"</span>,</span><br><span class="line">                        <span class="string">"http://localhost:4000/*"</span></span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">				&#125;</span><br><span class="line">		]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>&quot;Condition&quot;</code> 用来防盗链，这样只有通过之内的域名（HTTP Head）才能访问这个储存桶的文件。只适用于以 <code>https://s3-ap-northeast-1.amazonaws.com/&lt;bucket-name&gt;/&lt;filename&gt;</code> 访问的情况。</p>
+<ol start="3">
+<li><p>在 <code>属性</code> 页面，选择静态网站托管，索引文件填 <code>index.html</code>，错误文档填 <code>error.html</code>，不必真的有这两个页面。这一步也可以不需要。</p>
+</li>
+<li><p>这时候往这个存储桶里上传文件，就可以有一个链接了。当然，这个链接在大型局域网下访问会很缓慢，有的还打不开。下面加上一个 CDN 就会好不少，而且在大型局域网外也会改善。</p>
+</li>
+<li><p>打开 CloudFront Distribution 选择 <code>Create（创建分配）</code>：</p>
+<ul>
+<li><code>Origin Domain Name</code> 选择刚才 S3 Bucket 的名称</li>
+<li><code>Alternate Domain Names (CNAMEs)</code> 有自定义域名就填，没有就空着</li>
+<li><code>Price Class</code> 选择 <code>Use Only US, Canada, Europe and Asia</code></li>
+<li>限制存储桶访问，创建新身份，并更新存储桶策略（授予读取权限），这样会自动在存储桶策略中的 <code>&quot;Statement&quot;</code> 中加入允许 CloudFront 访问的以下内容<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">		<span class="attr">"Sid"</span>: <span class="string">"2"</span>,</span><br><span class="line">		<span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">		<span class="attr">"Principal"</span>: &#123;</span><br><span class="line">				<span class="attr">"AWS"</span>: <span class="string">"arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity XXX"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"Action"</span>: <span class="string">"s3:GetObject"</span>,</span><br><span class="line">		<span class="attr">"Resource"</span>: <span class="string">"arn:aws:s3:::&lt;bucket-name&gt;/*"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>过一会 就会部署好，使用 <code>cloudfront.net</code> 的域名（或自定义的）访问即可。这样有个问题是使用这个域名速度非常快但是是没有防盗链的，需要配合 AWS WAF 解决。</p>
+</li>
+</ol>
+<h2 id="OneDrive-图床"><a href="#OneDrive-图床" class="headerlink" title="OneDrive 图床"></a>OneDrive 图床</h2><p>不得不说 CloudFront 的速度还是相当之快，即使是 HK 上线之前局域网内也是秒开。唯一的缺点就是费用还是需要一点的，尤其是图片很多的话。目前 AWS 还没有免费额度（一年试用之后）。</p>
+<p>后来还是希望使用完全免费的平台，也不上域名之类的。所以我现在使用的是 OneDrive，被墙了，但是同 Flickr 一样，嵌入的图片是可以打开的。使用方法很简单，想办法上传之后，然后点击嵌入，复制链接即可使用（最好删掉链接 <code>?</code> 及之后的内容，否则比如 GIF 会不动）。</p>
+<p>如果说缺点，大概就是：</p>
+<ul>
+<li>大局域网内不如 AWS 快</li>
+<li>每张图片都需要手动点击嵌入，复制链接（AWS 的链接前面都是相同的，链接中只需改文件名，而 OneDrive 的链接都是乱的）</li>
+</ul>
+<h1 id="多台电脑之间同步"><a href="#多台电脑之间同步" class="headerlink" title="多台电脑之间同步"></a>多台电脑之间同步</h1><p>我大多数时间使用一台 Windows 的台式机，出门旅游过年回家等用 Mac。这部分得学习 Git，感觉这也是用 Github Pages 的好处，廖雪峰的 Git 教程我看就很不错且够用。</p>
+<ol start="0">
+<li><p>前提知识：<code>./.deploy_git/</code> 如前所述，这个是真正推送到 <code>&lt;username.github.io&gt;</code> 这个 repository 的文件夹，而且，每次 <code>hexo deploy</code> 执行的都是 force push，意味着如果这个文件夹丢失，那么之前的 commit 也都会消失。</p>
+</li>
+<li><p>把 theme 文件夹里可能有的 .git 文件夹删了，目录里不能同时有两个（.deploy_git 下也有一个但是这个在 .gitignore 中被忽略了）。</p>
+</li>
+<li><p>新建一个 repository，称它为 backup repo（有人说用分支，但是现在 private repo 也免费了，而且还不会占一个 repo 1GB 的空间限制）。</p>
+</li>
+<li><p>针对 tranquilpeak 这个 theme：删掉 theme/.gitignore 里面的 <code>assets</code>。</p>
+</li>
+<li><p>在 Hexo 文件夹的 Git Bash 中 <code>git init</code> -&gt; <code>git add .</code> -&gt; <code>git commit -m &quot;&lt;info&gt;&quot;</code> -&gt; <code>git remote add origin git@github.com:&lt;username&gt;/&lt;reponame&gt;.git</code> -&gt; <code>git push -u origin master</code></p>
+</li>
+<li><p>现在，除了 public 和 node_modules 之外的所有文件都备份到了 GitHub。前者通过 <code>Hexo g</code> 生成，后者 <code>npm install</code> 安装，都是无需备份的。</p>
+</li>
+<li><p>在新的电脑上，首先安装 Git、Node.js、Hexo，然后配置好 SSH Key，然后把刚才的 backup repo <code>clone</code> 下来，再把 <code>&lt;username.github.io&gt;</code> 这个 repo <code>clone</code> 到 hexo 文件夹内，文件夹名称改为 <code>.deploy_git</code>。最后在 hexo 和 theme 上分别 <code>npm install</code>。</p>
+<div class="alert info"><p>在 Windows 上有个很蠢的问题就是它可能不让用 <code>.</code> 开头作为文件（夹）名，需要 cmd 命令 <code>ren &lt;dir_path&gt; .deploy_git</code> 【更新：Windows10 1903 已经解决了这个问题】</p>
+</div>
+</li>
+<li><p>之后需要在两台电脑切换时，只需在做了最新修改的一台电脑 push backup repo；然后在另一台 pull backup repo，如果执行过 <code>hexo d</code> 的话还要在 <code>.deploy_git</code> 上也 pull。就完成了多台电脑的同步，且这样不会丢失 commit history。</p>
+</li>
+</ol>
+<h1 id="更新-Hexo-的版本"><a href="#更新-Hexo-的版本" class="headerlink" title="更新 Hexo 的版本"></a>更新 Hexo 的版本</h1><p>更新升级意义不大，大版本再折腾吧。theme 直接下载新的 release，把 <code>_config-theme.yml</code> 和 <code>assets</code> 文件夹复制过去覆盖就好，当然前提是看下 <code>_config-theme.yml</code> 有没有大变化。</p>
+<p>Hexo 可以修改 <code>package.json</code> 里面的版本，最新版本号可以 <code>npm outdated</code> 查看，然后 <code>npm install</code>。</p>
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Amazon-S3/">Amazon S3</a> <a class="tag tag--primary tag--small t-link" href="/tags/GitHub-Pages/">GitHub Pages</a> <a class="tag tag--primary tag--small t-link" href="/tags/Hexo/">Hexo</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/post/hajimemashite-fujisan/" data-tooltip="初次见面，富士山" aria-label="NEXT: 初次见面，富士山">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tangh.github.io/post/hexo-with-github-pages-static-site/" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tangh.github.io/post/hexo-with-github-pages-static-site/" title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tangh.github.io/post/hexo-with-github-pages-static-site/" title="Share on Google+">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://tangh.github.io/post/hexo-with-github-pages-static-site/" title="Share on Weibo">
+                    <i class="fab fa-weibo" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tangh.github.io/post/hexo-with-github-pages-static-site/&amp;title=Hexo + GitHub Pages 静态网站" title="Share on QQ">
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitalk">
+                         <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitalk"></div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 Tang Huan. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-bar-actions-wrap">
+    <div class="post-actions post-action-share">
+        <div class="post-action">
+            
+                <a class="post-bar-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fas fa-angle-up" aria-hidden="true"></i>
+            </a>
+        </div>
+        
+            
+                <div class="post-action">
+                    <a class="post-bar-action-btn btn btn--default" href="#gitalk">
+                         <i class="fas fa-angle-down"></i>
+                    </a>
+                </div>
+            
+        
+    </div>
+</div>
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tangh.github.io/post/hexo-with-github-pages-static-site/">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://tangh.github.io/post/hexo-with-github-pages-static-site/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://tangh.github.io/post/hexo-with-github-pages-static-site/">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=https://tangh.github.io/post/hexo-with-github-pages-static-site/">
+                        <i class="fab fa-weibo" aria-hidden="true"></i><span>Share on Weibo</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tangh.github.io/post/hexo-with-github-pages-static-site/&amp;title=Hexo + GitHub Pages 静态网站">
+                        <i class="fab fa-qq" aria-hidden="true"></i><span>Share on QQ</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/icon.jpg" alt="Author&#39;s picture">
+        
+            <h4 id="about-card-name">Tang Huan</h4>
+        
+            <div id="about-card-bio"></div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-cslqglovbsymp2tfzyfn3whjy8z2o7scoiqenxoukl84w5g86copgz9ohmib.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitalk({
+                        clientID: 'b7b365f41dbbfaaf9b88',
+                        clientSecret: '25de272b8030e3c498dd56b883e4386d881b6d62',
+                        owner: 'tangh',
+                        admin: ['tangh'],
+                        repo: 'tangh.github.io',
+                        id: 'https://tangh.github.io/post/hexo-with-github-pages-static-site/'.replace(/https:\/\/(.*?)\//, ''),
+                        
+                        language: 'en',
+                        
+                        perPage: 10,
+                        distractionFreeMode: false,
+                        pagerDirection: 'first',
+                        createIssueManually: true
+                    }).render('gitalk');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
+    
+
+
+
+    <script>!function(e){var l=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var r=0;r<l.length;r++)t=l[r],void 0,(n=t.getBoundingClientRect()).top>=-n.height&&0<=n.left&&n.top<=1.5*(e.innerHeight||document.documentElement.clientHeight)&&function(t){var n,e,i,o,c=l[r];n=c,e=function(){l=l.filter(function(t){return c!==t})},i=new Image,o=n.getAttribute("data-original"),i.onload=function(){n.src=o,e&&e()},i.src=o}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>

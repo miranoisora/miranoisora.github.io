@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tangh.github.io/about/</loc>
+    
+    <lastmod>2019-05-26T11:12:19.495Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tangh.github.io/post/hexo-with-github-pages-static-site/</loc>
     
-    <lastmod>2019-05-26T10:26:12.365Z</lastmod>
+    <lastmod>2019-05-26T11:12:02.273Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://tangh.github.io/post/hajimemashite-fujisan/</loc>
     
     <lastmod>2019-05-26T05:24:26.140Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/about/</loc>
-    
-    <lastmod>2019-04-05T16:52:21.434Z</lastmod>
     
   </url>
   

@@ -2468,7 +2468,7 @@ blockquote {
 
 .caption {
   display: block;
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1.3rem;
   color: #81929d;
   text-align: center;
@@ -2945,7 +2945,7 @@ a.fancybox {
   .post .post-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.2px;
-    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #5d686f;
     margin-top: 20px;
     font-weight: 400;
@@ -2965,7 +2965,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.2px;
     text-align: justify;
-    font-family: "Merriweather", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: "Merriweather", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #5d686f;
     margin-top: 20px;
     font-weight: 400;
@@ -3284,7 +3284,7 @@ a.fancybox {
   .postShorten .postShorten-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #5d686f;
     font-weight: 400;
     overflow: hidden;
@@ -3556,7 +3556,7 @@ a.tag--small,
   color: #349ef3 !important; }
 
 .font-merryweather {
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; }
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 .tooltip, [data-tooltip] {
   position: relative;

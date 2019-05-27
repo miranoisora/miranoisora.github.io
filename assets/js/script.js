@@ -16628,7 +16628,7 @@ return jQuery;
             var targetOffset = 0;
           }
           else {
-            var $target = $(this.hash);
+            var $target = $(decodeURI(this.hash));
             var targetOffset = $target.offset().top;
           }
           $('html,body').animate({

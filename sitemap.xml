@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
+    
+    <lastmod>2019-12-19T12:23:45.040Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tangh.github.io/articles/hexo-with-github-pages-static-site/</loc>
     
     <lastmod>2019-12-19T08:21:26.318Z</lastmod>
@@ -45,13 +52,6 @@
   
   <url>
     <loc>https://tangh.github.io/articles/coco-and-cityscapes-datasets/</loc>
-    
-    <lastmod>2019-12-19T06:46:37.148Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
     
     <lastmod>2019-12-19T06:46:37.148Z</lastmod>
     

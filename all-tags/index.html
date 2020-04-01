@@ -3,7 +3,7 @@
 <html lang="zh-Hans-CN">
     
 <head>
-    <meta charset="UTF-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="雨天等放晴">
     <title>all-tags - 雨天等放晴</title>
@@ -50,14 +50,14 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-137837052-1');
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
     
 </head>
 
     <body>
-        <div id="blog">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
             <!-- Define author's picture -->
 
 
@@ -267,6 +267,10 @@
                 CityScapes
             </a>
         
+            <a class="tag tag--primary tag--small" href="#Computer-Vision-list" data-tag="computer vision">
+                Computer Vision
+            </a>
+        
             <a class="tag tag--primary tag--small" href="#Datasets-list" data-tag="datasets">
                 Datasets
             </a>
@@ -289,6 +293,10 @@
         
             <a class="tag tag--primary tag--small" href="#Japan-list" data-tag="japan">
                 Japan
+            </a>
+        
+            <a class="tag tag--primary tag--small" href="#PyTorch-list" data-tag="pytorch">
+                PyTorch
             </a>
         
             <a class="tag tag--primary tag--small" href="#Taiwan-list" data-tag="taiwan">
@@ -386,6 +394,35 @@
                 </ul>
             </div>
         
+            <div id="Computer-Vision-list" class="archive box" data-tag="computer vision">
+                <h4 class="archive-title">
+                    <a class="link-unstyled" href="/tags/Computer-Vision">
+                        Computer Vision (2)
+                    </a>
+                </h4>
+                <ul class="archive-posts">
+                    
+                        <li class="archive-post">
+                            <a class="archive-post-title" href="/articles/build-model-and-dataset-in-pytorch/">
+                                PyTorch 中構建模型和輸入數據的方法
+                            </a>
+                            <span class="archive-post-date">
+                                 - mar 30, 2020
+                            </span>
+                        </li>
+                    
+                        <li class="archive-post">
+                            <a class="archive-post-title" href="/articles/coco-and-cityscapes-datasets/">
+                                COCO 和 CityScapes 数据集的标注格式和使用
+                            </a>
+                            <span class="archive-post-date">
+                                 - aug 11, 2019
+                            </span>
+                        </li>
+                    
+                </ul>
+            </div>
+        
             <div id="Datasets-list" class="archive box" data-tag="datasets">
                 <h4 class="archive-title">
                     <a class="link-unstyled" href="/tags/Datasets">
@@ -409,10 +446,28 @@
             <div id="Deep-Learning-list" class="archive box" data-tag="deep learning">
                 <h4 class="archive-title">
                     <a class="link-unstyled" href="/tags/Deep-Learning">
-                        Deep Learning (1)
+                        Deep Learning (3)
                     </a>
                 </h4>
                 <ul class="archive-posts">
+                    
+                        <li class="archive-post">
+                            <a class="archive-post-title" href="/articles/frequently-used-built-in-loss-functions/">
+                                深度學習中一些常用的內建損失函數
+                            </a>
+                            <span class="archive-post-date">
+                                 - mar 31, 2020
+                            </span>
+                        </li>
+                    
+                        <li class="archive-post">
+                            <a class="archive-post-title" href="/articles/build-model-and-dataset-in-pytorch/">
+                                PyTorch 中構建模型和輸入數據的方法
+                            </a>
+                            <span class="archive-post-date">
+                                 - mar 30, 2020
+                            </span>
+                        </li>
                     
                         <li class="archive-post">
                             <a class="archive-post-title" href="/articles/coco-and-cityscapes-datasets/">
@@ -506,6 +561,35 @@
                 </ul>
             </div>
         
+            <div id="PyTorch-list" class="archive box" data-tag="pytorch">
+                <h4 class="archive-title">
+                    <a class="link-unstyled" href="/tags/PyTorch">
+                        PyTorch (2)
+                    </a>
+                </h4>
+                <ul class="archive-posts">
+                    
+                        <li class="archive-post">
+                            <a class="archive-post-title" href="/articles/frequently-used-built-in-loss-functions/">
+                                深度學習中一些常用的內建損失函數
+                            </a>
+                            <span class="archive-post-date">
+                                 - mar 31, 2020
+                            </span>
+                        </li>
+                    
+                        <li class="archive-post">
+                            <a class="archive-post-title" href="/articles/build-model-and-dataset-in-pytorch/">
+                                PyTorch 中構建模型和輸入數據的方法
+                            </a>
+                            <span class="archive-post-date">
+                                 - mar 30, 2020
+                            </span>
+                        </li>
+                    
+                </ul>
+            </div>
+        
             <div id="Taiwan-list" class="archive box" data-tag="taiwan">
                 <h4 class="archive-title">
                     <a class="link-unstyled" href="/tags/Taiwan">
@@ -580,7 +664,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2019 Tang Huan. All Rights Reserved.
+        Copyrights &copy; 2020 Tang Huan. All Rights Reserved.
     </span>
 </footer>
 
@@ -634,5 +718,5 @@
 
 
 
-    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],(n=t.getBoundingClientRect()).top>=-n.height&&0<=n.left&&n.top<=1.5*(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script></body>
+    <script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],(n=t.getBoundingClientRect()).top>=-n.height&&0<=n.left&&n.top<=1.5*(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

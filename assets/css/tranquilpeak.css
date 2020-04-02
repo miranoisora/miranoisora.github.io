@@ -227,6 +227,7 @@ blockquote {
   line-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  cursor: pointer;
   z-index: 30; }
   #about #about-card {
     position: relative;
@@ -237,6 +238,7 @@ blockquote {
     margin: 15px auto;
     border-radius: 3px;
     padding: 30px 0;
+    cursor: initial;
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
@@ -1449,7 +1451,7 @@ blockquote {
 
 .caption {
   display: block;
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 1.3rem;
   color: #81929d;
   text-align: center;
@@ -1579,6 +1581,10 @@ figure.highlight,
 .figure.right {
   float: right;
   margin: 2px; }
+
+.figure .fig-video {
+  width: 100%;
+  height: auto; }
 
 .figure.fig-20 {
   width: calc(20% - 4px); }
@@ -1786,7 +1792,9 @@ a.fancybox {
   .markdown h5 {
     font-size: 1.45rem; }
   .markdown h6 {
-    font-size: 1.45rem; } }
+    font-size: 1.45rem; }
+  .markdown h1 {
+    margin-top: 40px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .markdown h1 {
@@ -1802,7 +1810,7 @@ a.fancybox {
   .markdown h6 {
     font-size: 1.6rem; }
   .markdown h1 {
-    margin-top: 60px; } }
+    margin-top: 50px; } }
 
 .media-body, .media-left {
   display: table-cell;
@@ -1926,7 +1934,7 @@ a.fancybox {
   .post .post-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.2px;
-    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     color: #5d686f;
     margin-top: 20px;
     font-weight: 400;
@@ -1942,25 +1950,47 @@ a.fancybox {
       margin: 1.5em 0 0 0; }
     .post .post-content li p {
       margin: 0 0 0 0; }
-  .post .post-content-serif {
+  .post .post-content-serif-sc {
     text-rendering: optimizelegibility;
     letter-spacing: -0.2px;
     text-align: justify;
-    font-family: "Merriweather", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Merriweather", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     color: #5d686f;
     margin-top: 20px;
+    font-size: 1.7rem;
     font-weight: 400;
     overflow: hidden;
     -webkit-hypens: auto;
     -moz-hypens: auto;
     hypens: auto; }
-    .post .post-content-serif img {
+    .post .post-content-serif-sc img {
       display: block;
       width: auto;
       max-width: 100%; }
-    .post .post-content-serif :not(blockquote):not(li):not(.alert) > p {
+    .post .post-content-serif-sc :not(blockquote):not(li):not(.alert) > p {
       margin: 1.5em 0 0 0; }
-    .post .post-content-serif li p {
+    .post .post-content-serif-sc li p {
+      margin: 0 0 0 0; }
+  .post .post-content-serif-tc {
+    text-rendering: optimizelegibility;
+    letter-spacing: -0.2px;
+    text-align: justify;
+    font-family: "Merriweather", "Noto Serif JP", "Source Han Serif JP", "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    color: #5d686f;
+    margin-top: 20px;
+    font-size: 1.7rem;
+    font-weight: 400;
+    overflow: hidden;
+    -webkit-hypens: auto;
+    -moz-hypens: auto;
+    hypens: auto; }
+    .post .post-content-serif-tc img {
+      display: block;
+      width: auto;
+      max-width: 100%; }
+    .post .post-content-serif-tc :not(blockquote):not(li):not(.alert) > p {
+      margin: 1.5em 0 0 0; }
+    .post .post-content-serif-tc li p {
       margin: 0 0 0 0; }
   .post .post-footer {
     margin-top: 20px; }
@@ -1980,8 +2010,10 @@ a.fancybox {
 @media only screen and (min-width: 768px) {
   .post-content {
     font-size: 1.7rem; }
-  .post-content-serif {
-    font-size: 1.7rem; } }
+  .post-content-serif-sc {
+    font-size: 1.8rem; }
+  .post-content-serif-tc {
+    font-size: 1.8rem; } }
 
 .post-actions-wrap {
   height: 60px;
@@ -2001,7 +2033,7 @@ a.fancybox {
     z-index: 42; }
     .post-actions-wrap ul.post-action-nav li.post-action {
       float: left;
-      min-width: 42px; }
+      min-width: 45px; }
       .post-actions-wrap ul.post-action-nav li.post-action:last-child .post-action-btn {
         margin-left: 15px; }
   .post-actions-wrap ul.post-action-share {
@@ -2265,7 +2297,7 @@ a.fancybox {
   .postShorten .postShorten-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     color: #5d686f;
     font-weight: 400;
     overflow: hidden;
@@ -2537,7 +2569,7 @@ a.tag--small,
   color: #349ef3 !important; }
 
 .font-merryweather {
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; }
 
 .tooltip, [data-tooltip] {
   position: relative;

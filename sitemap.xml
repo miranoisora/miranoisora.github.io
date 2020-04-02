@@ -2,44 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tangh.github.io/articles/build-model-and-dataset-in-pytorch/</loc>
+    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
     
-    <lastmod>2020-04-01T12:35:13.150Z</lastmod>
+    <lastmod>2020-04-02T15:11:47.106Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
+    <loc>https://tangh.github.io/articles/build-model-and-dataset-in-pytorch/</loc>
     
-    <lastmod>2020-04-01T12:24:16.348Z</lastmod>
+    <lastmod>2020-04-02T15:11:34.742Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/about/</loc>
     
-    <lastmod>2020-03-31T12:15:33.259Z</lastmod>
+    <lastmod>2020-04-02T12:19:57.115Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
     
-    <lastmod>2020-03-31T06:44:05.258Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/coco-and-cityscapes-datasets/</loc>
-    
-    <lastmod>2020-03-31T06:42:18.144Z</lastmod>
+    <lastmod>2020-04-02T12:19:14.707Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/articles/hexo-with-github-pages-static-site/</loc>
     
-    <lastmod>2019-12-19T08:21:26.318Z</lastmod>
+    <lastmod>2020-04-02T12:19:03.218Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/coco-and-cityscapes-datasets/</loc>
+    
+    <lastmod>2020-04-02T12:18:51.714Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/hajimemashite-fujisan/</loc>
+    
+    <lastmod>2020-04-02T12:18:40.091Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/western-united-states/</loc>
+    
+    <lastmod>2020-04-02T12:14:39.614Z</lastmod>
     
   </url>
   
@@ -61,20 +75,6 @@
     <loc>https://tangh.github.io/all-tags/</loc>
     
     <lastmod>2019-12-19T06:46:37.149Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/hajimemashite-fujisan/</loc>
-    
-    <lastmod>2019-12-19T06:46:37.148Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/western-united-states/</loc>
-    
-    <lastmod>2019-12-19T06:46:37.147Z</lastmod>
     
   </url>
   

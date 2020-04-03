@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
+    <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
     
-    <lastmod>2020-04-02T15:11:47.106Z</lastmod>
+    <lastmod>2020-04-03T05:25:40.375Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/hajimemashite-fujisan/</loc>
+    
+    <lastmod>2020-04-03T04:04:22.937Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/western-united-states/</loc>
+    
+    <lastmod>2020-04-03T04:04:17.837Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/articles/build-model-and-dataset-in-pytorch/</loc>
     
-    <lastmod>2020-04-02T15:11:34.742Z</lastmod>
+    <lastmod>2020-04-03T03:59:01.452Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
+    
+    <lastmod>2020-04-03T03:45:49.567Z</lastmod>
     
   </url>
   
@@ -19,13 +40,6 @@
     <loc>https://tangh.github.io/about/</loc>
     
     <lastmod>2020-04-02T12:19:57.115Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
-    
-    <lastmod>2020-04-02T12:19:14.707Z</lastmod>
     
   </url>
   
@@ -44,28 +58,14 @@
   </url>
   
   <url>
-    <loc>https://tangh.github.io/articles/hajimemashite-fujisan/</loc>
-    
-    <lastmod>2020-04-02T12:18:40.091Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/western-united-states/</loc>
-    
-    <lastmod>2020-04-02T12:14:39.614Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/all-archives/</loc>
+    <loc>https://tangh.github.io/all-categories/</loc>
     
     <lastmod>2019-12-19T06:46:37.149Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tangh.github.io/all-categories/</loc>
+    <loc>https://tangh.github.io/all-archives/</loc>
     
     <lastmod>2019-12-19T06:46:37.149Z</lastmod>
     

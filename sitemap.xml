@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tangh.github.io/about/</loc>
+    
+    <lastmod>2020-04-04T16:22:18.980Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/posts/simple-thoughts-on-chinese-characters/</loc>
+    
+    <lastmod>2020-04-04T16:08:28.446Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tangh.github.io/articles/western-united-states/</loc>
     
     <lastmod>2020-04-03T12:48:11.034Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
     
     <lastmod>2020-04-03T03:45:49.567Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/about/</loc>
-    
-    <lastmod>2020-04-02T12:19:57.115Z</lastmod>
     
   </url>
   

@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tangh.github.io/articles/backward-in-convolutional-neural-networks/</loc>
+    
+    <lastmod>2020-04-22T04:48:56.183Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
+    
+    <lastmod>2020-04-22T04:46:51.199Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/western-united-states/</loc>
+    
+    <lastmod>2020-04-21T08:19:42.969Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
+    
+    <lastmod>2020-04-20T13:07:15.579Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/build-model-and-dataset-in-pytorch/</loc>
+    
+    <lastmod>2020-04-20T03:28:44.180Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tangh.github.io/about/</loc>
     
     <lastmod>2020-04-04T16:22:18.980Z</lastmod>
@@ -16,37 +51,9 @@
   </url>
   
   <url>
-    <loc>https://tangh.github.io/articles/western-united-states/</loc>
-    
-    <lastmod>2020-04-03T12:48:11.034Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tangh.github.io/articles/hajimemashite-fujisan/</loc>
     
     <lastmod>2020-04-03T12:47:50.246Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
-    
-    <lastmod>2020-04-03T05:25:40.375Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/build-model-and-dataset-in-pytorch/</loc>
-    
-    <lastmod>2020-04-03T03:59:01.452Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
-    
-    <lastmod>2020-04-03T03:45:49.567Z</lastmod>
     
   </url>
   

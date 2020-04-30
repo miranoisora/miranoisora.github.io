@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tangh.github.io/articles/backward-in-convolutional-neural-networks/</loc>
+    <loc>https://tangh.github.io/articles/yolo-from-v1-to-v4/</loc>
     
-    <lastmod>2020-04-22T04:48:56.183Z</lastmod>
+    <lastmod>2020-04-30T04:01:37.599Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/articles/icip-in-taiwan-sees-and-hears/</loc>
     
-    <lastmod>2020-04-22T04:46:51.199Z</lastmod>
+    <lastmod>2020-04-30T01:24:17.256Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/posts/simple-thoughts-on-chinese-characters/</loc>
+    
+    <lastmod>2020-04-30T00:39:51.932Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/about/</loc>
+    
+    <lastmod>2020-04-29T17:30:55.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/backward-in-convolutional-neural-networks/</loc>
+    
+    <lastmod>2020-04-29T16:27:06.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/hexo-with-github-pages-static-site/</loc>
+    
+    <lastmod>2020-04-29T16:27:05.803Z</lastmod>
     
   </url>
   
@@ -37,30 +65,9 @@
   </url>
   
   <url>
-    <loc>https://tangh.github.io/about/</loc>
-    
-    <lastmod>2020-04-04T16:22:18.980Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/posts/simple-thoughts-on-chinese-characters/</loc>
-    
-    <lastmod>2020-04-04T16:08:28.446Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tangh.github.io/articles/hajimemashite-fujisan/</loc>
     
     <lastmod>2020-04-03T12:47:50.246Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/hexo-with-github-pages-static-site/</loc>
-    
-    <lastmod>2020-04-02T12:19:03.218Z</lastmod>
     
   </url>
   

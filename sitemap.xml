@@ -2,23 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tangh.github.io/articles/efficientnet-and-efficientdet/</loc>
+    <loc>https://tangh.github.io/articles/improvements-of-regressor-in-detector/</loc>
     
-    <lastmod>2020-05-12T12:26:42.091Z</lastmod>
+    <lastmod>2020-06-01T16:55:03.335Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
+    
+    <lastmod>2020-06-01T16:48:08.845Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/articles/backward-in-convolutional-neural-networks/</loc>
     
-    <lastmod>2020-05-12T11:48:34.727Z</lastmod>
+    <lastmod>2020-06-01T16:48:06.835Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/efficientnet-and-efficientdet/</loc>
+    
+    <lastmod>2020-05-28T08:03:56.350Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tangh.github.io/articles/yolo-from-v1-to-v4/</loc>
     
-    <lastmod>2020-05-12T11:46:59.605Z</lastmod>
+    <lastmod>2020-05-27T15:33:02.896Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangh.github.io/articles/index-in-numpy-and-pytorch/</loc>
+    
+    <lastmod>2020-05-23T13:42:20.918Z</lastmod>
     
   </url>
   
@@ -61,13 +82,6 @@
     <loc>https://tangh.github.io/articles/western-united-states/</loc>
     
     <lastmod>2020-04-21T08:19:42.969Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tangh.github.io/articles/frequently-used-built-in-loss-functions/</loc>
-    
-    <lastmod>2020-04-20T13:07:15.579Z</lastmod>
     
   </url>
   
